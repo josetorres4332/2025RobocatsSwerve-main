@@ -9,6 +9,7 @@ import frc.robot.subsystems.climber.ClimberSubsystem;
 import frc.robot.subsystems.elevator.ElevatorSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.wrist.WristSubsystem;
+import com.pathplanner.lib.auto.NamedCommands;
 
 public class RobotContainer
 {
@@ -27,7 +28,16 @@ public class RobotContainer
  
   //The container for the robot. Contains subsystems, OI devices, and commands.
   public RobotContainer()
-  {
+  {    
+    NamedCommands.registerCommand("Default", elevator.goToDefaultCommand());
+    NamedCommands.registerCommand("Raise Elevator to Level 1", elevator.goToLevel1Command());
+    NamedCommands.registerCommand("Raise Elevator to Level 2", elevator.goToLevel2Command());
+    NamedCommands.registerCommand("Raise Elevator to Level 3", elevator.goToLevel3Command());
+    NamedCommands.registerCommand("Raise Elevator to Level 4", elevator.goToLevel4Command());    
+    NamedCommands.registerCommand("Hold Elevator Position", elevator.holdElevatorPositionCommand());
+    NamedCommands.registerCommand("Raise Wrist", wrist.goToWDefaultCommand());
+    NamedCommands.registerCommand("Drop Wrist", wrist.goToDropCommand());
+    NamedCommands.registerCommand("Hold Wrist Position", wrist.holdArmPositionCommand());
 
     // Configure the trigger bindings
     configureBindings();
@@ -94,6 +104,10 @@ public class RobotContainer
     driverXbox.leftBumper().whileFalse(climber.climberStop());
 
   }
+
+  
+  //NamedCommands.registerCommand()
+  //NamedCommands.registerCommand("Raise Elevator", elevator.goToLevel3Command());
 
   //Applies deadbands to driver joystick inputs before sending them to the robot movement
   Command driveFieldOrientedAngularVelocity = drivebase.driveCommand(

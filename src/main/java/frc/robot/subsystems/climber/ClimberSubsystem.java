@@ -39,12 +39,12 @@ public class ClimberSubsystem extends SubsystemBase {
     }
     
     public void motorForward(){
-        leftClimbMotor.set(ControlMode.PercentOutput, -0.25);
-        rightClimberMotor.set(ControlMode.PercentOutput, 0.25);
+        leftClimbMotor.set(ControlMode.PercentOutput, -0.5);
+        rightClimberMotor.set(ControlMode.PercentOutput, 0.5);
     }
 
     public void motorReverse(){
-      leftClimbMotor.set(ControlMode.PercentOutput, 0.25);
-      rightClimberMotor.set(ControlMode.PercentOutput, -0.25);
+      leftClimbMotor.set(ControlMode.PercentOutput, 0.5);
+      rightClimberMotor.set(ControlMode.PercentOutput, -0.5);
   }
 }
