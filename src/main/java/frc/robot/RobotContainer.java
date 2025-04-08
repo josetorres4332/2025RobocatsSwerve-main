@@ -38,6 +38,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Raise Wrist", wrist.goToWDefaultCommand());
     NamedCommands.registerCommand("Drop Wrist", wrist.goToDropCommand());
     NamedCommands.registerCommand("Hold Wrist Position", wrist.holdArmPositionCommand());
+     
 
     // Configure the trigger bindings
     configureBindings();
@@ -113,7 +114,7 @@ public class RobotContainer
   Command driveFieldOrientedAngularVelocity = drivebase.driveCommand(
                           () -> (MathUtil.applyDeadband(driverXbox.getLeftY(), Constants.RIGHT_X_DEADBAND)),
                           () -> (MathUtil.applyDeadband(driverXbox.getLeftX(), Constants.RIGHT_Y_DEADBAND)), 
-                          () -> -(driverXbox.getRightX() * Constants.TURN_CONSTANT));   
+                          () -> (driverXbox.getRightX() * Constants.TURN_CONSTANT));   
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

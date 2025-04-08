@@ -41,8 +41,8 @@ public final class Constants
   public static final int coralElbowID = 15;
 
   //climber motor CAD ID
-  public static final int leftclimberMotorID = 23;
-  public static final int rightClimberMotorID = 24;
+  public static final int leftclimberMotorID = 24;
+  public static final int rightClimberMotorID = 25;
 
   public static final class DrivebaseConstants
   {
