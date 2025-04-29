@@ -9,7 +9,9 @@ import frc.robot.subsystems.climber.ClimberSubsystem;
 import frc.robot.subsystems.elevator.ElevatorSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.wrist.WristSubsystem;
+
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 
 public class RobotContainer
 {
@@ -24,11 +26,11 @@ public class RobotContainer
   private final SwerveSubsystem drivebase  = new SwerveSubsystem();
   private final ElevatorSubsystem elevator = new ElevatorSubsystem();
   private final WristSubsystem wrist = new WristSubsystem(); 
-  private final ClimberSubsystem climber = new ClimberSubsystem();  
+  private final ClimberSubsystem climber = new ClimberSubsystem();
  
   //The container for the robot. Contains subsystems, OI devices, and commands.
   public RobotContainer()
-  {    
+  {
     NamedCommands.registerCommand("Default", elevator.goToDefaultCommand());
     NamedCommands.registerCommand("Raise Elevator to Level 1", elevator.goToLevel1Command());
     NamedCommands.registerCommand("Raise Elevator to Level 2", elevator.goToLevel2Command());
@@ -37,8 +39,7 @@ public class RobotContainer
     NamedCommands.registerCommand("Hold Elevator Position", elevator.holdElevatorPositionCommand());
     NamedCommands.registerCommand("Raise Wrist", wrist.goToWDefaultCommand());
     NamedCommands.registerCommand("Drop Wrist", wrist.goToDropCommand());
-    NamedCommands.registerCommand("Hold Wrist Position", wrist.holdArmPositionCommand());
-     
+    NamedCommands.registerCommand("Hold Wrist Position", wrist.holdArmPositionCommand());    
 
     // Configure the trigger bindings
     configureBindings();
@@ -124,7 +125,7 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
 
-    return null;
+    return new PathPlannerAuto("New Auto");
 
   }
 
